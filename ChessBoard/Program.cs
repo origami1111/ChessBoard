@@ -4,27 +4,33 @@ namespace ChessBoard
 {
     class Program
     {
-        static void SetHeight(out uint h)
+        static uint GetHeight()
         {
+            uint h;
+
             Console.Write("Введите высоту шахматной доски: ");
             while (!uint.TryParse(Console.ReadLine(), out h))
                 Console.Write("Введите целое положительное число!: ");
+
+            return h;
         }
-        static void SetWidth(out uint w)
+        static uint GetWidth()
         {
+            uint w;
+
             Console.Write("Введите ширину шахматной доски: ");
             while (!uint.TryParse(Console.ReadLine(), out w))
                 Console.Write("Введите целое положительное число!: ");
-        }
 
+            return w;
+        }
+        static void PrintInstructions()
+        {
+
+        }
         static void Main(string[] args)
         {
-            uint h, w;
-
-            SetHeight(out h);
-            SetWidth(out w);
-
-            ChessBoard chessBoard = new ChessBoard(h, w);
+            ChessBoard chessBoard = new ChessBoard(GetHeight(), GetWidth());
             chessBoard.printChessBoard();
 
             Console.WriteLine("Программа завершена");
