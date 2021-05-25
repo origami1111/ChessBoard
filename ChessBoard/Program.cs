@@ -20,12 +20,11 @@ namespace ChessBoard
         static void Main(string[] args)
         {
             uint h, w;
-            ChessBoard chessBoard;
 
             SetHeight(out h);
             SetWidth(out w);
 
-            chessBoard = new ChessBoard(h, w);
+            ChessBoard chessBoard = new ChessBoard(h, w);
             chessBoard.printChessBoard();
 
             Console.WriteLine("Программа завершена");
