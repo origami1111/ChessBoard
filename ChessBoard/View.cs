@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ChessBoard
 {
@@ -44,7 +42,7 @@ namespace ChessBoard
                             PrintTask();
                             break;
                         default:
-                            Console.WriteLine("Не правильно введен аргумент!");
+                            Console.WriteLine($"Аргумент '{str}' не найден, или введено неверно!");
                             break;
                     }
                 }

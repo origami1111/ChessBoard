@@ -19,7 +19,8 @@ namespace ChessBoard
             view = new View();
             view.PrintInstructions(args);
             chessBoard = new ChessBoard(view.GetHeight(), view.GetWidth());
-            chessBoard.printChessBoard();
+            chessBoard.FillChessBoard();
+            Console.WriteLine(chessBoard);
         }
     }
 }

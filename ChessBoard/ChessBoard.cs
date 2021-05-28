@@ -1,9 +1,10 @@
-﻿using System;
+﻿using System.Text;
 
 namespace ChessBoard
 {
     class ChessBoard
     {
+        private StringBuilder board;
         private uint Height { get; set; }
         public uint Width { get; set; }
 
@@ -14,22 +15,28 @@ namespace ChessBoard
             this.Height = height;
             this.Width = width;
         }
-        public void printChessBoard()
+        public override string ToString()
         {
+            return (board.ToString());
+        }
+        public void FillChessBoard()
+        {
+            board = new StringBuilder();
+
             for (int i = 0; i < Height; i++)
             {
                 for (int j = 0; j < Width; j++)
                 {
                     if (i % 2 == 0)
                     {
-                        Console.Write("* ");
+                        board.Append("* ");
                     }
                     else
                     {
-                        Console.Write(" *");
+                        board.Append(" *");
                     }
                 }
-                Console.WriteLine();
+                board.Append('\n');
             }
         }
     }
