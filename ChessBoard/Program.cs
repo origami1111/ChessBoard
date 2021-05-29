@@ -8,6 +8,7 @@ namespace ChessBoard
         {
             ConsoleController consoleController = new ConsoleController(args);
             consoleController.Start();
+            
 
             Console.WriteLine("Программа завершена");
             Console.ReadKey();

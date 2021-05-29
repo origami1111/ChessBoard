@@ -19,7 +19,7 @@ namespace ChessBoard
         {
             Console.WriteLine("========================================================");
             Console.WriteLine("Возможные параметры:" +
-                "\n-help - выводит информация о параметрах" +
+                "\n-help - выводит информаци. о параметрах" +
                 "\n-task - выводит условие задания");
             Console.WriteLine("========================================================");
         }
@@ -42,7 +42,7 @@ namespace ChessBoard
                             PrintTask();
                             break;
                         default:
-                            Console.WriteLine($"Аргумент '{str}' не найден, или введено неверно!");
+                            Console.WriteLine($"Аргумент '{str}' не найден, или введен неверно!");
                             break;
                     }
                 }
@@ -54,7 +54,7 @@ namespace ChessBoard
 
             while (true)
             {
-                Console.Write($"Введите высоту шахматной доски: ");
+                Console.Write($"Введите высоту шахматной доски (максимум {Console.WindowHeight - 1}): ");
 
                 if (!uint.TryParse(Console.ReadLine(), out h))
                 {
@@ -78,7 +78,7 @@ namespace ChessBoard
 
             while (true)
             {
-                Console.Write("Введите ширину шахматной доски: ");
+                Console.Write($"Введите ширину шахматной доски (максимум {(Console.WindowWidth / 2) - 1}): ");
 
                 if (!uint.TryParse(Console.ReadLine(), out w))
                 {
@@ -96,5 +96,6 @@ namespace ChessBoard
 
             return w;
         }
+
     }
 }
