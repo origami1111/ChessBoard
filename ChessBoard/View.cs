@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Threading;
 
 namespace ChessBoard
 {
     class View
     {
+        private ChessBoard chessBoard;
+        private WindowSizeChangedEvent windowSizeChangedEvent;
+
         private void PrintTask()
         {
             Console.WriteLine("========================================================");
@@ -48,7 +52,24 @@ namespace ChessBoard
                 }
             }
         }
-        public uint GetHeight()
+        
+
+        public void SetSides()
+        {
+            StartWSCEvent();
+            uint h = GetHeight();
+            windowSizeChangedEvent.whichSide = 2;
+            uint w = GetWidth();
+            StopWSCEvent();
+
+            chessBoard = new ChessBoard(h, w);
+            chessBoard.FillChessBoard();
+        }
+        public void PrintBoard()
+        {
+            Console.WriteLine(chessBoard);
+        }
+        private uint GetHeight()
         {
             uint h;
 
@@ -72,7 +93,7 @@ namespace ChessBoard
 
             return h;
         }
-        public uint GetWidth()
+        private uint GetWidth()
         {
             uint w;
 
@@ -95,6 +116,18 @@ namespace ChessBoard
             }
 
             return w;
+        }
+
+        private void StartWSCEvent()
+        {
+            windowSizeChangedEvent = new WindowSizeChangedEvent();
+            windowSizeChangedEvent.listner = new Thread(windowSizeChangedEvent.EventListnerWork);
+            windowSizeChangedEvent.listner.Start();
+        }
+        private void StopWSCEvent()
+        {
+            windowSizeChangedEvent.isListnerOn = false;
+            windowSizeChangedEvent.listner.Join(); // Метод join() приостанавливает выполнение текущего потока до тех пор, пока не завершится другой поток.
         }
 
     }

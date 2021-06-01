@@ -8,8 +8,6 @@ namespace ChessBoard
         private uint Height { get; set; }
         public uint Width { get; set; }
 
-
-        public ChessBoard() { }
         public ChessBoard(uint height, uint width)
         {
             this.Height = height;
